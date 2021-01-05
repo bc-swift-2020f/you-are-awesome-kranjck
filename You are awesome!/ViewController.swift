@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     
     var imageNumber = 0
+    var messageNumber = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,8 +20,13 @@ class ViewController: UIViewController {
     }
     
     @IBAction func messageButtonPressed(_ sender: UIButton) {
-        
-        print(imageNumber)
+        let messages = ["You are awesome!", "You are great!",
+                        "You are swifty!", "You are wonderful"]
+        messageLabel.text = messages[messageNumber]
+        messageNumber+=1
+        if messageNumber == messages.count {
+            messageNumber = 0
+        }
         let imageName = "image" + String(imageNumber)
         // or let imageName = "image\(imageName)" (this is string interpolation)
         imageView.image = UIImage(named: imageName)
@@ -28,6 +34,8 @@ class ViewController: UIViewController {
         if imageNumber > 9{
             imageNumber = 0
         }
+        
+    }
 //        code below was for chapter 2.8:
 //        let awesomeMessage = "You are awesome!"
 //        let greatMessage = "You are great!"
@@ -42,6 +50,6 @@ class ViewController: UIViewController {
 //            messageLabel.text = awesomeMessage
 //            imageView.image = UIImage(named: "image0")
 //        }
-    }
+    
 }
 
